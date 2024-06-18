@@ -45,7 +45,7 @@ python3 --version
 
 ## Install Nvidia-Drivers
 
-```sh
+```bash
 # Setup distribution for drivers
 sudo apt-get install linux-headers-$(uname -r)
 distribution=$(. /etc/os-release;echo $ID$VERSION_ID | sed -e 's/\.//g')
