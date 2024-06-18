@@ -11,7 +11,7 @@ This document provides a comprehensive list of Linux commands necessary to inclu
 5. [Relocating Docker /Root Directory](#relocating-docker-root-directory)
 6. [Mount Disk to File-System](#mount-disk-to-file-system)
 7. [Hostname Modification](#hostname-modification)
-8. [Network Configuration](#network-configuration)
+8. [Installing Self-Signed Certificates](#installing-self-signed-certificates)
 9. [Storage Management](#storage-management)
 10. [Security Settings](#security-settings)
 11. [Backup and Restore](#backup-and-restore)
@@ -120,5 +120,16 @@ sudo reboot
 
 ```sh
 sudo hostnamectl set-hostname <newhostname>
+
+```
+
+
+## Installing Self-Signed Certificates
+
+```sh
+# You'll get two files - cert.pem and cert.key as a result
+# These files will be valid for 365 days
+openssl req -x509 -newkey rsa:4096 -nodes -out cert.pem -keyout key.pem -days 365
+
 
 ```
