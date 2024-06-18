@@ -97,7 +97,7 @@ sudo docker --version
 ## Relocating Docker /Root Directory
 
 - Refer to this site - [Click Here](https://www.ibm.com/docs/en/z-logdata-analytics/5.1.0?topic=software-relocating-docker-root-directory)
-
+<br>
 
 ## Mount Disk to File-System
 
