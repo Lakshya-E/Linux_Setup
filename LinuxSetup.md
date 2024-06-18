@@ -5,7 +5,7 @@ This document provides a comprehensive list of Linux commands necessary to inclu
 ## Table of Contents
 
 1. [System Update](#system-update)
-2. [User Management](#user-management)
+2. [Install Python3](#user-management)
 3. [Firewall Configuration](#firewall-configuration)
 4. [SSH Configuration](#ssh-configuration)
 5. [Software Installation](#software-installation)
@@ -24,3 +24,21 @@ This document provides a comprehensive list of Linux commands necessary to inclu
 
 # Upgrade all installed packages
 <command>
+```
+
+
+## Install Python3
+
+```sh
+# Update the package list
+<command>
+
+# Upgrade all installed packages
+<command>
+
+sudo apt-get update
+sudo apt-get install python3
+sudo apt-get install -y python3-pip python3-dev
+Now, check with $ python3 --version
+
+```
