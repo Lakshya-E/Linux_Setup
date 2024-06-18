@@ -156,7 +156,7 @@ curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.li
 
 sudo apt-get update
 
-# If `sudo apt-get update` fails in the step above, perform the action mentioned below and again update
+# If `sudo apt-get update` fails in the step above, perform the action mentioned below and update again
 # Skip these two steps if `sudo apt-get update` was a success
 grep -l "nvidia.github.io" /etc/apt/sources.list.d/* | grep -vE "/nvidia-container-toolkit.list\$"
 sudo apt-get update
