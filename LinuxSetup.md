@@ -135,11 +135,11 @@ openssl req -x509 -newkey rsa:4096 -nodes -out cert.pem -keyout key.pem -days 36
 
 
 ## Install Nvidia-Docker
-* In case of a dockerized app that requires GPU, follow these steps to install Nvidia-Docker
+- In case of a dockerized app that requires GPU, follow these steps to install Nvidia-Docker
 
 ##### Note: 
  - First make sure you installed Docker and Nvidia-Drivers.
- - If not, follow guides mentiioned: [Install Nvidia-Drivers](#install-nvidia-drivers), [Install Docker](#install-docker)
+ - If not, follow guides mentiioned: [Install Docker](#install-docker), [Install Nvidia-Drivers](#install-nvidia-drivers)
 
 ```sh
 # Remove any previously installed nvidia-docker packeges that might hinder the process
