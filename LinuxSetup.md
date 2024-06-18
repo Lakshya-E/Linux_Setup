@@ -100,9 +100,9 @@ sudo docker --version
 
 ## Mount Disk to File-System
 
-- Refer to this site - [Click Here](https://linuxconfig.org/how-to-add-new-disk-to-existing-linux-system)
+1. Follow steps as instructed - [Click Here](https://linuxconfig.org/how-to-add-new-disk-to-existing-linux-system)
 
-- Persist mounted disk:
+2. Persist mounted disk even after Reboot
 ```sh
 # Open fstab file
 nano /etc/fstab
