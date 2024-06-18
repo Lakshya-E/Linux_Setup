@@ -7,7 +7,7 @@ This document provides a comprehensive list of Linux commands necessary to inclu
 1. [System Update](#system-update)
 2. [Install Python3](#install-python3)
 3. [Install Nvidia-Drivers](#install-nvidia-drivers)
-4. [SSH Configuration](#ssh-configuration)
+4. [Install Docker](#install-docker)
 5. [Software Installation](#software-installation)
 6. [System Configuration](#system-configuration)
 7. [Service Management](#service-management)
@@ -16,14 +16,14 @@ This document provides a comprehensive list of Linux commands necessary to inclu
 10. [Security Settings](#security-settings)
 11. [Backup and Restore](#backup-and-restore)
 
-## System Update
+## Update System
 
 ```sh
 # Update the package list
-<command>
+sudo apt-get update
 
-# Upgrade all installed packages
-<command>
+# Install required packages
+sudo apt-get install -y build-essential
 ```
 
 
@@ -38,14 +38,14 @@ sudo apt-get install python3
 sudo apt-get install -y python3-pip python3-dev
 
 # Check Python with
-$ python3 --version
+python3 --version
 
 ```
 
 
 ## Install Nvidia-Drivers
 
-```bash
+```sh
 # Setup distribution for drivers
 sudo apt-get install linux-headers-$(uname -r)
 distribution=$(. /etc/os-release;echo $ID$VERSION_ID | sed -e 's/\.//g')
@@ -62,6 +62,31 @@ sudo apt-get -y install cuda-drivers
 export PATH=/usr/local/cuda-12.2/bin${PATH:+:${PATH}}
 
 # Check nvidia-drivers with
-$ nvidia-smi
+nvidia-smi
+
+```
+
+
+## Install Docker
+
+```sh
+# Update the package list
+sudo apt-get update
+
+# Setup required certificated and keys
+sudo apt-get install ca-certificates curl gnupg
+
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+
+# Install Docker
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# Check docker with
+sudo docker --version
 
 ```
