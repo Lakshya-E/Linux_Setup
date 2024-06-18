@@ -14,6 +14,7 @@ This document provides a comprehensive list of Linux commands necessary to inclu
 8. [Establishing Self-Signed Certificates](#establishing-self-signed-certificates)
 9. [Install Nvidia-Docker](#install-nvidia-docker)
 10. [Installing Git-LFS](#installing-git-lfs)
+<br>
 
 ## Update System
 
@@ -25,7 +26,7 @@ sudo apt-get update
 sudo apt-get install -y build-essential
 sudo apt-get install -y software-properties-common
 ```
-
+<br>
 
 ## Install Python3
 
@@ -41,7 +42,7 @@ sudo apt-get install -y python3-pip python3-dev
 python3 --version
 
 ```
-
+<br>
 
 ## Install Nvidia-Drivers
 
@@ -66,7 +67,7 @@ export PATH=/usr/local/cuda-12.2/bin${PATH:+:${PATH}}
 nvidia-smi
 
 ```
-
+<br>
 
 ## Install Docker
 
@@ -91,7 +92,7 @@ sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plug
 sudo docker --version
 
 ```
-
+<br>
 
 ## Relocating Docker /Root Directory
 
@@ -114,7 +115,7 @@ nano /etc/fstab
 sudo reboot
 
 ```
-
+<br>
 
 ## Hostname Modification
 
@@ -122,7 +123,7 @@ sudo reboot
 sudo hostnamectl set-hostname <newhostname>
 
 ```
-
+<br>
 
 ## Establishing Self-Signed Certificates
 
@@ -132,7 +133,7 @@ sudo hostnamectl set-hostname <newhostname>
 openssl req -x509 -newkey rsa:4096 -nodes -out cert.pem -keyout key.pem -days 365
 
 ```
-
+<br>
 
 ## Install Nvidia-Docker
 - In case of a dockerized app that requires GPU, follow these steps to install Nvidia-Docker
@@ -176,6 +177,7 @@ sudo docker run --runtime=nvidia --gpus all image_name nvidia-smi
 sudo docker run --runtime=nvidia --gpus all image_name
 
 ```
+<br>
 
 ## Installing Git-LFS
 
