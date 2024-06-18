@@ -11,10 +11,9 @@ This document provides a comprehensive list of Linux commands necessary to inclu
 5. [Relocating Docker /Root Directory](#relocating-docker-root-directory)
 6. [Mount Disk to File-System](#mount-disk-to-file-system)
 7. [Hostname Modification](#hostname-modification)
-8. [Installing Self-Signed Certificates](#installing-self-signed-certificates)
-9. [Storage Management](#storage-management)
-10. [Security Settings](#security-settings)
-11. [Backup and Restore](#backup-and-restore)
+8. [Establishing Self-Signed Certificates](#establishing-self-signed-certificates)
+9. [Install Nvidia-Docker](#install-nvidia-docker)
+10. [Installing Git-LFS](#installing-git-lfs)
 
 ## Update System
 
@@ -24,6 +23,7 @@ sudo apt-get update
 
 # Install required packages
 sudo apt-get install -y build-essential
+sudo apt-get install -y software-properties-common
 ```
 
 
@@ -124,12 +124,71 @@ sudo hostnamectl set-hostname <newhostname>
 ```
 
 
-## Installing Self-Signed Certificates
+## Establishing Self-Signed Certificates
 
 ```sh
 # You'll get two files - cert.pem and cert.key as a result
 # These files will be valid for 365 days
 openssl req -x509 -newkey rsa:4096 -nodes -out cert.pem -keyout key.pem -days 365
 
+```
+
+
+## Install Nvidia-Docker
+* In case of a dockerized app that requires GPU, follow these steps to install Nvidia-Docker
+
+##### Note: 
+ - First make sure you installed Docker and Nvidia-Drivers.
+ - If not, follow guides mentiioned: [Install Nvidia-Drivers](#install-nvidia-drivers), [Install Docker](#install-docker)
+
+```sh
+# Remove any previously installed nvidia-docker packeges that might hinder the process
+sudo docker volume ls -q -f driver=nvidia-docker | xargs -r -I{} -n1 docker ps -q -a -f volume={} | xargs -r docker rm -f
+sudo apt-get purge nvidia-docker
+
+# Setup required keys and distribution
+curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | \
+  sudo apt-key add -
+
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | \
+  sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+
+sudo apt-get update
+
+# If `sudo apt-get update` fails in the step above, perform the action mentioned below and again update
+# Skip these two steps if `sudo apt-get update` was a success
+grep -l "nvidia.github.io" /etc/apt/sources.list.d/* | grep -vE "/nvidia-container-toolkit.list\$"
+sudo apt-get update
+
+# Install Nvidia-Docker2
+sudo apt-get install -y nvidia-docker2
+sudo pkill -SIGHUP dockerd
+sudo apt-get update && sudo apt-get install -y nvidia-container-toolkit
+sudo systemctl restart docker
+
+# To check your docker container connectivity with GPU
+sudo docker run --runtime=nvidia --gpus all image_name nvidia-smi
+# nvidia-smi at end tests if docker container is linking with nvidia-drivers
+# In case of a failure, you'll not see a nvidia-smi pop-up window
+
+# To run docker container with GPU support 
+sudo docker run --runtime=nvidia --gpus all image_name
 
 ```
+
+## Installing Git-LFS
+
+```sh
+# Install required packages
+sudo apt-get -y install software-properties-common
+sudo curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash*
+
+# Install Git-LFS
+sudo apt-get install git-lfs
+
+# Enable Git-LFS
+git lfs install
+
+```
+
