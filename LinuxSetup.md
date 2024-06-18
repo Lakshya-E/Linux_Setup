@@ -4,13 +4,13 @@ This document provides a comprehensive list of Linux commands necessary to inclu
 
 ## Table of Contents
 
-1. [System Update](#system-update)
+1. [Update System](#update-system)
 2. [Install Python3](#install-python3)
 3. [Install Nvidia-Drivers](#install-nvidia-drivers)
 4. [Install Docker](#install-docker)
 5. [Relocating Docker /Root Directory](#relocating-docker-root-directory)
 6. [Mount Disk to File-System](#mount-disk-to-file-system)
-7. [Service Management](#service-management)
+7. [Hostname Modification](#hostname-modification)
 8. [Network Configuration](#network-configuration)
 9. [Storage Management](#storage-management)
 10. [Security Settings](#security-settings)
@@ -101,3 +101,24 @@ sudo docker --version
 ## Mount Disk to File-System
 
 - Refer to this site - [Click Here](https://linuxconfig.org/how-to-add-new-disk-to-existing-linux-system)
+
+- Persist mounted disk:
+```sh
+# Open fstab file
+nano /etc/fstab
+
+# Add your mounted disk and directory in this file
+/dev/sdX /mounted_directory ext4 defaults 0 0
+
+# Save file then,
+sudo reboot
+
+```
+
+
+## Hostname Modification
+
+```sh
+sudo hostnamectl set-hostname <newhostname>
+
+```
