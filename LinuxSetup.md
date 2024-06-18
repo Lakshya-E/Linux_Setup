@@ -38,7 +38,7 @@ sudo apt-get install python3
 sudo apt-get install -y python3-pip python3-dev
 
 # Check Python with
-python3 --version
+$ python3 --version
 
 ```
 
@@ -62,6 +62,6 @@ sudo apt-get -y install cuda-drivers
 export PATH=/usr/local/cuda-12.2/bin${PATH:+:${PATH}}
 
 # Check nvidia-drivers with
-nvidia-smi
+$ nvidia-smi
 
 ```
