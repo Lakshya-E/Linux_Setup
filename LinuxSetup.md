@@ -8,8 +8,8 @@ This document provides a comprehensive list of Linux commands necessary to inclu
 2. [Install Python3](#install-python3)
 3. [Install Nvidia-Drivers](#install-nvidia-drivers)
 4. [Install Docker](#install-docker)
-5. [Software Installation](#software-installation)
-6. [System Configuration](#system-configuration)
+5. [Relocating Docker /Root Directory](#software-installation)
+6. [Mount Disk to File-System](#mount-disk)
 7. [Service Management](#service-management)
 8. [Network Configuration](#network-configuration)
 9. [Storage Management](#storage-management)
@@ -97,3 +97,7 @@ sudo docker --version
 
 - Refer to this site - [Click Here](https://www.ibm.com/docs/en/z-logdata-analytics/5.1.0?topic=software-relocating-docker-root-directory)
 
+
+## Mount Disk to File-System
+
+- Refer to this site - [Click Here](https://linuxconfig.org/how-to-add-new-disk-to-existing-linux-system)
